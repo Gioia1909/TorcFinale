@@ -14,7 +14,7 @@ public class ManualDriver extends Controller {
     private float currentAccel = 0f, currentBrake = 0f, steering = 0f, clutch = 0f;
     private long lastSaveTime = 0;
 
-    private static final long MIN_SAVE_INTERVAL_MS = 50;
+    private static final long MIN_SAVE_INTERVAL_MS = 150;
 
     final float clutchMax = 0.5f;
     final float clutchDelta = 0.05f;
@@ -109,7 +109,7 @@ public class ManualDriver extends Controller {
                     try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
                         if (!fileExists || fileIsEmpty) {
                             bw.write(
-                                    "Track2,Track5,Track8,Track9,Track10,Track13,Track16,TrackPosition,AngleToTrackAxis,Speed,SpeedY,Accelerate,Brake,Steering,Gear\n");
+                                    "Track2,Track5,Track8,Track9,Track10,Track13,Track16,TrackPosition,AngleToTrackAxis,Speed,SpeedY,DistanceFromStart,Accelerate,Brake,Steering,Gear\n");
                         }
                         double[] trackSensors = sensors.getTrackEdgeSensors();
                         bw.write(
