@@ -3,29 +3,39 @@ package scr;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @brief KNNClassifier implementa un regressore basato su k-Nearest Neighbors
+ *        (k-NN).
+ *        Supporta normalizzazione delle feature, gestione di dataset da file
+ *        CSV, e predizione di valori target continui.
+ */
 public class KNNClassifier {
     private List<Sample> trainingData;
     private KDTree kdtree;
     private int k;
-    private static final String LOG_FILE = "log_predizioni.csv";
 
-    // Flag per sapere se ho scritto intestazione su log
-    private boolean logHeaderWritten = false;
-
-    // Definizione delle feature
+    /** @brief Nomi delle feature usate nel modello */
     public static final String[] featureNames = {
             "Track2", "Track5", "Track8", "Track9", "Track10", "Track13", "Track16",
-            "TrackPosition", "AngleToTrackAxis", "Speed", "SpeedY" //, "DistanceFromStartLine"
+            "TrackPosition", "AngleToTrackAxis", "Speed", "SpeedY"
     };
 
-    // Valori massimi per le features (ad esempio 200 per i sensori)
+    /** @brief Valori massimi per la normalizzazione delle feature */
     private static final double[] featureMaxValues = {
-            200, 200, 200, 200, 200, 200, 200, 2, Math.PI, 300, 268//, 5784
+            200, 200, 200, 200, 200, 200, 200, 2, Math.PI, 300, 268
     };
-    // Minimi e massimi per i target
+    /** @brief Valori minimi dei target */
     private double[] targetMins;
+
+    /** @brief Valori massimi dei target */
     private double[] targetMaxs;
 
+    /**
+     * @brief Costruttore principale che legge i dati da un file.
+     * @param filename Percorso del file CSV contenente i dati
+     * @param k        Numero di vicini da considerare nel KNN
+     * @throws RuntimeException se il dataset è vuoto
+     */
     public KNNClassifier(String filename, int k) {
         this.trainingData = new ArrayList<>();
         this.k = k;
@@ -35,21 +45,23 @@ public class KNNClassifier {
         if (rawSamples.isEmpty()) {
             throw new RuntimeException("Dataset vuoto!");
         }
-        //normalizzazione
-       computeTargetMinMax(rawSamples);
-       normalizeSamples(rawSamples);
+        // normalizzazione
+        computeTargetMinMax(rawSamples);
+        normalizeSamples(rawSamples);
 
         this.trainingData = rawSamples;
         this.kdtree = new KDTree(trainingData);
 
     }
 
-    // Costruttore che accetta direttamente i dati di addestramento
-    // già normalizzati e le etichette
-    // (utilizzato per testare il classificatore con dati già pronti)
+    /**
+     * @brief Costruttore alternativo che accetta direttamente dati già caricati.
+     * @param trainingData Lista di campioni
+     * @param k            Numero di vicini
+     */
     public KNNClassifier(List<Sample> trainingData, int k) {
         this.k = k;
-        //NORMALIZZAZIONE
+        // NORMALIZZAZIONE
         computeTargetMinMax(trainingData);
         normalizeSamples(trainingData);
 
@@ -57,6 +69,11 @@ public class KNNClassifier {
         this.kdtree = new KDTree(this.trainingData);
     }
 
+    /**
+     * @brief Legge i campioni dal file CSV.
+     * @param filename Percorso del file CSV
+     * @return Lista di campioni `Sample`
+     */
     private List<Sample> readRawSamples(String filename) {
         List<Sample> rawSamples = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -75,13 +92,23 @@ public class KNNClassifier {
         return rawSamples;
     }
 
+    /**
+     * @brief Trova i k vicini più vicini a un punto di test.
+     * @param testPoint Punto di test
+     * @return Lista di vicini `Sample`
+     */
     private List<Sample> findKNearest(Sample testPoint) {
         return kdtree.kNearestNeighbors(testPoint, k);
     }
 
+    /**
+     * @brief Predice i valori target (accelerazione, frenata, sterzata) per
+     *        un nuovo campione.
+     * @param testPoint Campione di test (non normalizzato)
+     * @return Array dei valori predetti [accelerate, brake, steering]
+     */
     public double[] predict(Sample testPoint) {
-        double[] allFeatures = testPoint.features;
-        //NORMALIZZAZIONE
+        // NORMALIZZAZIONE
         double[] normalized = normalizeFeatures(testPoint.features.clone());
         testPoint.features = normalized;
 
@@ -101,70 +128,17 @@ public class KNNClassifier {
         for (int i = 0; i < (result.length - 1); i++) {
             result[i] /= neighbors.size();
         }
-        //NORMALIZZAZIONE
+        // NORMALIZZAZIONE
         double[] denormResult = denormalizeTargets(result);
 
-        // Logga sia normalizzati che denormalizzati
-        //logPrediction(allFeatures, result, neighbors);
-        //NORMALIZZAZIONE
+        // NORMALIZZAZIONE
         return denormResult;
-       //return result; 
     }
 
-    // debrah dnsiajifd
-    private synchronized void logPrediction(double[] inputFeatures, double[] prediction, List<Sample> neighbors) {
-    try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
-
-        writer.println("Sample:");
-        writer.println("  input:     " + Arrays.toString(inputFeatures));
-        writer.println("  prediction:" + Arrays.toString(prediction));
-        writer.println();
-
-        for (int i = 0; i < neighbors.size(); i++) {
-            Sample neighbor = neighbors.get(i);
-            writer.println("Vicino " + (i + 1) + ":");
-            writer.println("  features: " + Arrays.toString(neighbor.features));
-            writer.println("  target:   " + Arrays.toString(neighbor.targets));
-            writer.println();
-        }
-
-        writer.println("--------------------------------------------------");
-
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-
-
-
-/*
-    private synchronized void logPrediction(double[] originalFeatures, double[] normalizedFeatures,
-        double[] prediction, double[] denormalized, List<Sample> neighbors) {
-
-    try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
-
-        writer.println("Sample:");
-        writer.println("  input_originale: " + Arrays.toString(originalFeatures));
-        writer.println("  predizione: " + Arrays.toString(denormalized));
-        writer.println();
-
-        for (int i = 0; i < neighbors.size(); i++) {
-            Sample neighbor = neighbors.get(i);
-            writer.println("Vicino " + (i + 1) + ":");
-            writer.println("  features: " + Arrays.toString(neighbor.features));
-            writer.println("  target:   " + Arrays.toString(neighbor.targets));
-            writer.println();
-        }
-
-        writer.println("--------------------------------------------------");
-
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-*/
-
-    // Calcola minimi e massimi per i target
+    /**
+     * @brief Calcola i valori minimi e massimi dei target.
+     * @param samples Lista di campioni da analizzare
+     */
     private void computeTargetMinMax(List<Sample> samples) {
         int numTargets = samples.get(0).targets.length; // Numero di target (accelerazione, frenata, sterzata, marcia)
 
@@ -185,8 +159,10 @@ public class KNNClassifier {
         }
     }
 
-    // Normalizza un campione (features e targets)
-    // Normalizza tutte le features e i target di ogni campione
+    /**
+     * @brief Normalizza le features e i target dei campioni forniti.
+     * @param samples Lista di campioni da normalizzare
+     */
     public void normalizeSamples(List<Sample> samples) {
         for (Sample s : samples) {
             s.features = normalizeFeatures(s.features); // Normalizza le features
@@ -194,7 +170,11 @@ public class KNNClassifier {
         }
     }
 
-    // Normalizza le features (feature / xmax)
+    /**
+     * @brief Normalizza un array di feature in base ai valori massimi predefiniti.
+     * @param features Array delle feature
+     * @return Array normalizzato
+     */
     public double[] normalizeFeatures(double[] features) {
         if (features.length != featureNames.length) {
             throw new IllegalArgumentException("Mismatch: features.length = " + features.length
@@ -216,7 +196,11 @@ public class KNNClassifier {
         return normalized;
     }
 
-    // Normalizza i target
+    /**
+     * @brief Normalizza i target in un intervallo [0,1].
+     * @param targets Array dei target originali
+     * @return Array normalizzato
+     */
     public double[] normalizeTargets(double[] targets) {
         double[] normalized = new double[targets.length];
         for (int i = 0; i < targets.length; i++) {
@@ -229,7 +213,11 @@ public class KNNClassifier {
         return normalized;
     }
 
-    // Denormalizza i target
+    /**
+     * @brief Denormalizza i target riportandoli alla scala originale.
+     * @param normalized Array normalizzato
+     * @return Array denormalizzato
+     */
     public double[] denormalizeTargets(double[] normalized) {
         double[] denormalized = new double[normalized.length];
         for (int i = 0; i < normalized.length; i++) {
