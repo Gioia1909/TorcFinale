@@ -1,44 +1,84 @@
+/**
+ * @file Sample.java
+ * @brief Rappresenta un campione del dataset, contenente input dai sensori e output di controllo del veicolo.
+ * 
+ * La classe Sample è utilizzata per rappresentare i dati grezzi e normalizzati derivanti da un file CSV o da input diretti. 
+ * Ogni campione contiene un array di feature (input dai sensori) e un array di target (accelerazione, frenata, sterzata, marcia).
+ */
+
 package scr;
 
+/**
+ * @class Sample
+ * @brief Rappresenta un singolo campione del dataset, contenente input sensoriali e output delle azioni del veicolo.
+ */
 public class Sample {
-    public double[] features; // Input dai sensori
-    public double[] targets; // Output: accelerate, brake, steering
 
-    // Costruttore da CSV: assume che le ultime 3 colonne siano gli output
+    /** 
+     * Array delle feature di input (es. sensori, posizione, velocità).
+     */
+    public double[] features;
+
+    /** 
+     * Array dei valori target (accelerazione, frenata, sterzata, marcia).
+     */
+    public double[] targets;
+
+    /**
+     * @brief Costruttore che crea un Sample a partire da una riga CSV.
+     * 
+     * Assume che le ultime 4 colonne siano i valori target: accelerazione, frenata, sterzata e marcia.
+     * 
+     * @param line Stringa CSV contenente feature e target separati da virgole.
+     */
     public Sample(String line) {
         String[] parts = line.split(",");
         int n = parts.length;
 
-        features = new double[n - 4]; // Tutti tranne gli ultimi 4
-        targets = new double[4]; // Ultimi 4: accelerate, brake, steering
+        features = new double[n - 4]; ///< Feature: tutte le colonne tranne le ultime 4
+        targets = new double[4]; ///< Target: ultime 4 colonne
 
         for (int i = 0; i < features.length; i++) {
             features[i] = Double.parseDouble(parts[i].trim());
         }
 
-        targets[0] = Double.parseDouble(parts[n - 4].trim()); // accelerate
-        targets[1] = Double.parseDouble(parts[n - 3].trim()); // brake
-        targets[2] = Double.parseDouble(parts[n - 2].trim()); // steering
-        targets[3] = Double.parseDouble(parts[n - 1].trim()); // gear
+        targets[0] = Double.parseDouble(parts[n - 4].trim()); ///< Accelerazione
+        targets[1] = Double.parseDouble(parts[n - 3].trim()); ///< Frenata
+        targets[2] = Double.parseDouble(parts[n - 2].trim()); ///< Sterzata
+        targets[3] = Double.parseDouble(parts[n - 1].trim()); ///< Marcia
 
     }
 
-    // Costruttore da array di features e array di target. Serve quando si
-    // costruisce il dataset
+    /**
+     * @brief Costruttore che crea un Sample a partire da array noti di feature e target.
+     * 
+     * @param features Array delle feature (input).
+     * @param targets Array dei target (output: accelerate, brake, steer, gear).
+     */
     public Sample(double[] features, double[] targets) {
         this.features = features;
         this.targets = targets;
     }
 
-    // costruttore che prende in ingresso solo le feature, usato quando ricevo gli
-    // input
+    /**
+     * @brief Costruttore che crea un Sample solo con le feature.
+     * 
+     * Inizializza i target a zero. Utile quando i target non sono noti (es. dati di test).
+     * 
+     * @param features Array delle feature (input).
+     */
     public Sample(double[] features) {
         this.features = features;
         this.targets = new double[4];
     }
 
-    // Calcolo distanza euclidea tra le features di due sample
 
+    /**
+     * @brief Calcola la distanza euclidea tra le feature di due Sample.
+     * 
+     * @param other L'altro sample da confrontare.
+     * @return La distanza euclidea tra le feature di this e other.
+     */
     public double distance(Sample other) {
         double sum = 0;
         for (int i = 0; i < this.features.length; i++) {
@@ -46,31 +86,4 @@ public class Sample {
         }
         return Math.sqrt(sum);
     }
-    /*
-     * public double distance(Sample other) {
-     * double sum = 0;
-     * 
-     * // Pesi coerenti con le 10 feature
-     * double[] weights = new double[] {
-     * 0.3, // TrackSensor[5]
-     * 0.3, // TrackSensor[7]
-     * 0.4, // TrackSensor[9] (centrale)
-     * 0.3, // TrackSensor[11]
-     * 0.3, // TrackSensor[13]
-     * 1.0, // TrackPosition
-     * 1.5, // AngleToTrackAxis → fondamentale!
-     * 0.5, // RPM
-     * 0.5, // Speed
-     * 0.7 // LateralSpeed → utile per capire la deriva
-     * };
-     * 
-     * for (int i = 0; i < features.length; i++) {
-     * double diff = this.features[i] - other.features[i];
-     * sum += weights[i] * diff * diff;
-     * }
-     * 
-     * return Math.sqrt(sum);
-     * }
-     */
-
 }
