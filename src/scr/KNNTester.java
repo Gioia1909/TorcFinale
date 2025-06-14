@@ -3,11 +3,31 @@ package scr;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @file KNNTester.java
+ * @brief Classe per testare un classificatore KNN su un dataset di guida.
+ * 
+ * Questo file esegue il test di un classificatore KNN su un dataset CSV contenente feature e target 
+ * relativi a tre azioni di guida (accelerazione, frenata, sterzata). Il file genera un log delle predizioni 
+ * in formato CSV e stampa a console le metriche di valutazione: errore quadratico medio (MSE) 
+ * e accuratezza discreta.
+ */
 public class KNNTester {
 
     private static final String DATASET_PATH = "dataset2589101316_10ms.csv";
     private static final String OUTPUT_LOG = "predizioni_test.csv";
 
+    /**
+     * @brief Metodo principale per eseguire il test del classificatore KNN.
+     * 
+     * - Carica e suddivide il dataset in train/test
+     * - Normalizza i dati
+     * - Esegue predizioni
+     * - Calcola l'MSE e l'accuratezza discreta
+     * - Scrive il log delle predizioni su file
+     * 
+     * @param args Argomenti da linea di comando (non utilizzati).
+     */
     public static void main(String[] args) {
         int k = 20;
         double testRatio = 0.2;
