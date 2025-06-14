@@ -1,0 +1,74 @@
+\doxysection{scr.\+KDTree Class Reference}
+\hypertarget{classscr_1_1_k_d_tree}{}\label{classscr_1_1_k_d_tree}\index{scr.KDTree@{scr.KDTree}}
+
+
+Rappresenta un albero KD per la ricerca dei vicini più prossimi.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classscr_1_1_k_d_tree_a002f28e355b99fbeb74bfd71b9def73f}{KDTree}} (List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$ points)
+\begin{DoxyCompactList}\small\item\em Costruttore del \doxylink{classscr_1_1_k_d_tree}{KDTree}. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$ \mbox{\hyperlink{classscr_1_1_k_d_tree_a214d302f944a1180bb6031eda1b18565}{k\+Nearest\+Neighbors}} (\mbox{\hyperlink{classscr_1_1_sample}{Sample}} target, int k)
+\begin{DoxyCompactList}\small\item\em Restituisce i k vicini più prossimi a un dato \doxylink{classscr_1_1_sample}{Sample}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta un albero KD per la ricerca dei vicini più prossimi. 
+
+La classe costruisce un KD-\/\+Tree a partire da un insieme di punti (\doxylink{classscr_1_1_sample}{Sample}) e consente di effettuare ricerche dei k-\/nearest neighbors in modo efficiente. 
+
+\label{doc-constructors}
+\Hypertarget{classscr_1_1_k_d_tree_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classscr_1_1_k_d_tree_a002f28e355b99fbeb74bfd71b9def73f}\index{scr.KDTree@{scr.KDTree}!KDTree@{KDTree}}
+\index{KDTree@{KDTree}!scr.KDTree@{scr.KDTree}}
+\doxysubsubsection{\texorpdfstring{KDTree()}{KDTree()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_d_tree_a002f28e355b99fbeb74bfd71b9def73f} 
+scr.\+KDTree.\+KDTree (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$}]{points}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Costruttore del \doxylink{classscr_1_1_k_d_tree}{KDTree}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & Lista di \doxylink{classscr_1_1_sample}{Sample} da cui costruire l\textquotesingle{}albero KD. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & se la lista di punti è vuota. \\
+\hline
+\end{DoxyExceptions}
+
+
+\label{doc-func-members}
+\Hypertarget{classscr_1_1_k_d_tree_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classscr_1_1_k_d_tree_a214d302f944a1180bb6031eda1b18565}\index{scr.KDTree@{scr.KDTree}!kNearestNeighbors@{kNearestNeighbors}}
+\index{kNearestNeighbors@{kNearestNeighbors}!scr.KDTree@{scr.KDTree}}
+\doxysubsubsection{\texorpdfstring{kNearestNeighbors()}{kNearestNeighbors()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_d_tree_a214d302f944a1180bb6031eda1b18565} 
+List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$ scr.\+KDTree.\+k\+Nearest\+Neighbors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classscr_1_1_sample}{Sample}}}]{target}{, }\item[{int}]{k}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Restituisce i k vicini più prossimi a un dato \doxylink{classscr_1_1_sample}{Sample}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Il punto di riferimento per la ricerca. \\
+\hline
+{\em k} & Numero di vicini da trovare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista dei k vicini più prossimi. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scr/KDTree.\+java\end{DoxyCompactItemize}

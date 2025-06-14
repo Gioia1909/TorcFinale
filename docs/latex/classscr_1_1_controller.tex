@@ -1,0 +1,86 @@
+\doxysection{scr.\+Controller Class Reference}
+\hypertarget{classscr_1_1_controller}{}\label{classscr_1_1_controller}\index{scr.Controller@{scr.Controller}}
+Inheritance diagram for scr.\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.964912cm]{classscr_1_1_controller}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_controller_ab70d1afbf4eeea6e9c2b067a4d76c8a7}{init\+Angles}} ()
+\item 
+\Hypertarget{classscr_1_1_controller_af144a12b28cbef5c6497c917d6ed31d7}\label{classscr_1_1_controller_af144a12b28cbef5c6497c917d6ed31d7} 
+\mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}} {\bfseries get\+Stage} ()
+\item 
+\Hypertarget{classscr_1_1_controller_a41fa00a774919652b23c7a86f1fb97aa}\label{classscr_1_1_controller_a41fa00a774919652b23c7a86f1fb97aa} 
+void {\bfseries set\+Stage} (\mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}} stage)
+\item 
+\Hypertarget{classscr_1_1_controller_a74ba470591b9517a9824c97a4b3de80c}\label{classscr_1_1_controller_a74ba470591b9517a9824c97a4b3de80c} 
+String {\bfseries get\+Track\+Name} ()
+\item 
+\Hypertarget{classscr_1_1_controller_a0b3244fe35fa8f3718e98d7457468bd8}\label{classscr_1_1_controller_a0b3244fe35fa8f3718e98d7457468bd8} 
+void {\bfseries set\+Track\+Name} (String track\+Name)
+\item 
+abstract \mbox{\hyperlink{classscr_1_1_action}{Action}} \mbox{\hyperlink{classscr_1_1_controller_aebef7097045267ded036d735523761cd}{control}} (\mbox{\hyperlink{interfacescr_1_1_sensor_model}{Sensor\+Model}} sensors)
+\item 
+abstract void \mbox{\hyperlink{classscr_1_1_controller_a920d0dab0e713298c193cb4004d8c72b}{reset}} ()
+\item 
+abstract void \mbox{\hyperlink{classscr_1_1_controller_a21022bef9d03438446c741956cd16b04}{shutdown}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classscr_1_1_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classscr_1_1_controller_aebef7097045267ded036d735523761cd}\index{scr.Controller@{scr.Controller}!control@{control}}
+\index{control@{control}!scr.Controller@{scr.Controller}}
+\doxysubsubsection{\texorpdfstring{control()}{control()}}
+{\footnotesize\ttfamily \label{classscr_1_1_controller_aebef7097045267ded036d735523761cd} 
+abstract \mbox{\hyperlink{classscr_1_1_action}{Action}} scr.\+Controller.\+control (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacescr_1_1_sensor_model}{Sensor\+Model}}}]{sensors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classscr_1_1_manual_driver_a11f89c452be88094ff1286be111426c3}{scr.\+Manual\+Driver}}, and \mbox{\hyperlink{classscr_1_1_simple_driver_a6c8d627753ca5518c63782938433e3bb}{scr.\+Simple\+Driver}}.
+
+\Hypertarget{classscr_1_1_controller_ab70d1afbf4eeea6e9c2b067a4d76c8a7}\index{scr.Controller@{scr.Controller}!initAngles@{initAngles}}
+\index{initAngles@{initAngles}!scr.Controller@{scr.Controller}}
+\doxysubsubsection{\texorpdfstring{initAngles()}{initAngles()}}
+{\footnotesize\ttfamily \label{classscr_1_1_controller_ab70d1afbf4eeea6e9c2b067a4d76c8a7} 
+float\mbox{[}$\,$\mbox{]} scr.\+Controller.\+init\+Angles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classscr_1_1_manual_driver_a33553329e7e614f0f723ed5296053526}{scr.\+Manual\+Driver}}, and \mbox{\hyperlink{classscr_1_1_simple_driver_a730af498a0336a2c537a6a94bbeabe71}{scr.\+Simple\+Driver}}.
+
+\Hypertarget{classscr_1_1_controller_a920d0dab0e713298c193cb4004d8c72b}\index{scr.Controller@{scr.Controller}!reset@{reset}}
+\index{reset@{reset}!scr.Controller@{scr.Controller}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classscr_1_1_controller_a920d0dab0e713298c193cb4004d8c72b} 
+abstract void scr.\+Controller.\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classscr_1_1_manual_driver_ad63156acb8c047303a654cea6864ddc7}{scr.\+Manual\+Driver}}, and \mbox{\hyperlink{classscr_1_1_simple_driver_abb0069f34348695650d1bf8b9b745650}{scr.\+Simple\+Driver}}.
+
+\Hypertarget{classscr_1_1_controller_a21022bef9d03438446c741956cd16b04}\index{scr.Controller@{scr.Controller}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!scr.Controller@{scr.Controller}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily \label{classscr_1_1_controller_a21022bef9d03438446c741956cd16b04} 
+abstract void scr.\+Controller.\+shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classscr_1_1_manual_driver_aad77a31d6f194cf9c44f99518a8dceba}{scr.\+Manual\+Driver}}, and \mbox{\hyperlink{classscr_1_1_simple_driver_afda4e895e07e68f21baea30a2131f3c7}{scr.\+Simple\+Driver}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scr/Controller.\+java\end{DoxyCompactItemize}

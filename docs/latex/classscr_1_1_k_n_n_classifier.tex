@@ -1,0 +1,196 @@
+\doxysection{scr.\+KNNClassifier Class Reference}
+\hypertarget{classscr_1_1_k_n_n_classifier}{}\label{classscr_1_1_k_n_n_classifier}\index{scr.KNNClassifier@{scr.KNNClassifier}}
+
+
+\doxylink{classscr_1_1_k_n_n_classifier}{KNNClassifier} implementa un regressore basato su k-\/\+Nearest Neighbors (k-\/\+NN). Supporta normalizzazione delle feature, gestione di dataset da file CSV, e predizione di valori target continui.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classscr_1_1_k_n_n_classifier_a404b92be7287b3ed2e3d01053275bc3e}{KNNClassifier}} (String filename, int k)
+\begin{DoxyCompactList}\small\item\em Costruttore principale che legge i dati da un file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classscr_1_1_k_n_n_classifier_aaa7bccca9614c57b33ad89dc6432b1b3}{KNNClassifier}} (List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$ training\+Data, int k)
+\begin{DoxyCompactList}\small\item\em Costruttore alternativo che accetta direttamente dati già caricati. \end{DoxyCompactList}\item 
+double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_k_n_n_classifier_a2ccc260f88af64345cd27519f314ddaf}{predict}} (\mbox{\hyperlink{classscr_1_1_sample}{Sample}} test\+Point)
+\begin{DoxyCompactList}\small\item\em Predice i valori target (accelerazione, frenata, sterzata) per un nuovo campione. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscr_1_1_k_n_n_classifier_a8ab8d89cb2204ab11254aff3a350a4d6}{normalize\+Samples}} (List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$ samples)
+\begin{DoxyCompactList}\small\item\em Normalizza le features e i target dei campioni forniti. \end{DoxyCompactList}\item 
+double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_k_n_n_classifier_aa4955d19f4e4121bb5c601d7310f263b}{normalize\+Features}} (double\mbox{[}$\,$\mbox{]} features)
+\begin{DoxyCompactList}\small\item\em Normalizza un array di feature in base ai valori massimi predefiniti. \end{DoxyCompactList}\item 
+double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_k_n_n_classifier_aedd47b68daef28f8376143d6054e4550}{normalize\+Targets}} (double\mbox{[}$\,$\mbox{]} targets)
+\begin{DoxyCompactList}\small\item\em Normalizza i target in un intervallo \mbox{[}0,1\mbox{]}. \end{DoxyCompactList}\item 
+double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_k_n_n_classifier_a6d4975e8262cbc961510403d5aae623c}{denormalize\+Targets}} (double\mbox{[}$\,$\mbox{]} normalized)
+\begin{DoxyCompactList}\small\item\em Denormalizza i target riportandoli alla scala originale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final String\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_k_n_n_classifier_acbe4131074811fabcbcdf27478ccc58c}{feature\+Names}}
+\begin{DoxyCompactList}\small\item\em Nomi delle feature usate nel modello. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classscr_1_1_k_n_n_classifier}{KNNClassifier} implementa un regressore basato su k-\/\+Nearest Neighbors (k-\/\+NN). Supporta normalizzazione delle feature, gestione di dataset da file CSV, e predizione di valori target continui. 
+
+\label{doc-constructors}
+\Hypertarget{classscr_1_1_k_n_n_classifier_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classscr_1_1_k_n_n_classifier_a404b92be7287b3ed2e3d01053275bc3e}\index{scr.KNNClassifier@{scr.KNNClassifier}!KNNClassifier@{KNNClassifier}}
+\index{KNNClassifier@{KNNClassifier}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{KNNClassifier()}{KNNClassifier()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_a404b92be7287b3ed2e3d01053275bc3e} 
+scr.\+KNNClassifier.\+KNNClassifier (\begin{DoxyParamCaption}\item[{String}]{filename}{, }\item[{int}]{k}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Costruttore principale che legge i dati da un file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Percorso del file CSV contenente i dati \\
+\hline
+{\em k} & Numero di vicini da considerare nel KNN \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Runtime\+Exception} & se il dataset è vuoto \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classscr_1_1_k_n_n_classifier_aaa7bccca9614c57b33ad89dc6432b1b3}\index{scr.KNNClassifier@{scr.KNNClassifier}!KNNClassifier@{KNNClassifier}}
+\index{KNNClassifier@{KNNClassifier}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{KNNClassifier()}{KNNClassifier()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_aaa7bccca9614c57b33ad89dc6432b1b3} 
+scr.\+KNNClassifier.\+KNNClassifier (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$}]{training\+Data}{, }\item[{int}]{k}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Costruttore alternativo che accetta direttamente dati già caricati. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em training\+Data} & Lista di campioni \\
+\hline
+{\em k} & Numero di vicini \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classscr_1_1_k_n_n_classifier_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classscr_1_1_k_n_n_classifier_a6d4975e8262cbc961510403d5aae623c}\index{scr.KNNClassifier@{scr.KNNClassifier}!denormalizeTargets@{denormalizeTargets}}
+\index{denormalizeTargets@{denormalizeTargets}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{denormalizeTargets()}{denormalizeTargets()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_a6d4975e8262cbc961510403d5aae623c} 
+double\mbox{[}$\,$\mbox{]} scr.\+KNNClassifier.\+denormalize\+Targets (\begin{DoxyParamCaption}\item[{double\mbox{[}$\,$\mbox{]}}]{normalized}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Denormalizza i target riportandoli alla scala originale. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em normalized} & Array normalizzato \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array denormalizzato 
+\end{DoxyReturn}
+\Hypertarget{classscr_1_1_k_n_n_classifier_aa4955d19f4e4121bb5c601d7310f263b}\index{scr.KNNClassifier@{scr.KNNClassifier}!normalizeFeatures@{normalizeFeatures}}
+\index{normalizeFeatures@{normalizeFeatures}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{normalizeFeatures()}{normalizeFeatures()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_aa4955d19f4e4121bb5c601d7310f263b} 
+double\mbox{[}$\,$\mbox{]} scr.\+KNNClassifier.\+normalize\+Features (\begin{DoxyParamCaption}\item[{double\mbox{[}$\,$\mbox{]}}]{features}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Normalizza un array di feature in base ai valori massimi predefiniti. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em features} & Array delle feature \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array normalizzato 
+\end{DoxyReturn}
+\Hypertarget{classscr_1_1_k_n_n_classifier_a8ab8d89cb2204ab11254aff3a350a4d6}\index{scr.KNNClassifier@{scr.KNNClassifier}!normalizeSamples@{normalizeSamples}}
+\index{normalizeSamples@{normalizeSamples}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{normalizeSamples()}{normalizeSamples()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_a8ab8d89cb2204ab11254aff3a350a4d6} 
+void scr.\+KNNClassifier.\+normalize\+Samples (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classscr_1_1_sample}{Sample}} $>$}]{samples}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Normalizza le features e i target dei campioni forniti. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em samples} & Lista di campioni da normalizzare \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classscr_1_1_k_n_n_classifier_aedd47b68daef28f8376143d6054e4550}\index{scr.KNNClassifier@{scr.KNNClassifier}!normalizeTargets@{normalizeTargets}}
+\index{normalizeTargets@{normalizeTargets}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{normalizeTargets()}{normalizeTargets()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_aedd47b68daef28f8376143d6054e4550} 
+double\mbox{[}$\,$\mbox{]} scr.\+KNNClassifier.\+normalize\+Targets (\begin{DoxyParamCaption}\item[{double\mbox{[}$\,$\mbox{]}}]{targets}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Normalizza i target in un intervallo \mbox{[}0,1\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em targets} & Array dei target originali \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array normalizzato 
+\end{DoxyReturn}
+\Hypertarget{classscr_1_1_k_n_n_classifier_a2ccc260f88af64345cd27519f314ddaf}\index{scr.KNNClassifier@{scr.KNNClassifier}!predict@{predict}}
+\index{predict@{predict}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_a2ccc260f88af64345cd27519f314ddaf} 
+double\mbox{[}$\,$\mbox{]} scr.\+KNNClassifier.\+predict (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classscr_1_1_sample}{Sample}}}]{test\+Point}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Predice i valori target (accelerazione, frenata, sterzata) per un nuovo campione. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Point} & Campione di test (non normalizzato) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array dei valori predetti \mbox{[}accelerate, brake, steering\mbox{]} 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{classscr_1_1_k_n_n_classifier_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classscr_1_1_k_n_n_classifier_acbe4131074811fabcbcdf27478ccc58c}\index{scr.KNNClassifier@{scr.KNNClassifier}!featureNames@{featureNames}}
+\index{featureNames@{featureNames}!scr.KNNClassifier@{scr.KNNClassifier}}
+\doxysubsubsection{\texorpdfstring{featureNames}{featureNames}}
+{\footnotesize\ttfamily \label{classscr_1_1_k_n_n_classifier_acbe4131074811fabcbcdf27478ccc58c} 
+final String \mbox{[}$\,$\mbox{]} scr.\+KNNClassifier.\+feature\+Names\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Track2"{}},\ \textcolor{stringliteral}{"{}Track5"{}},\ \textcolor{stringliteral}{"{}Track8"{}},\ \textcolor{stringliteral}{"{}Track9"{}},\ \textcolor{stringliteral}{"{}Track10"{}},\ \textcolor{stringliteral}{"{}Track13"{}},\ \textcolor{stringliteral}{"{}Track16"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}TrackPosition"{}},\ \textcolor{stringliteral}{"{}AngleToTrackAxis"{}},\ \textcolor{stringliteral}{"{}Speed"{}},\ \textcolor{stringliteral}{"{}SpeedY"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Nomi delle feature usate nel modello. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scr/KNNClassifier.\+java\end{DoxyCompactItemize}

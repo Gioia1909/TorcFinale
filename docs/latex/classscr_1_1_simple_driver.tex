@@ -1,0 +1,118 @@
+\doxysection{scr.\+Simple\+Driver Class Reference}
+\hypertarget{classscr_1_1_simple_driver}{}\label{classscr_1_1_simple_driver}\index{scr.SimpleDriver@{scr.SimpleDriver}}
+
+
+\doxylink{classscr_1_1_controller}{Controller} di guida autonoma basato su KNN. Utilizza un classificatore KNN per predire le azioni di guida (accelerazione, frenata, sterzata) sulla base delle letture dei sensori, con logica di gestione per marcia, frizione e recupero da situazione di blocco.  
+
+
+Inheritance diagram for scr.\+Simple\+Driver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classscr_1_1_simple_driver}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classscr_1_1_simple_driver_a943ea3cd7b9e4d629bffb14cbf3bc130}\label{classscr_1_1_simple_driver_a943ea3cd7b9e4d629bffb14cbf3bc130} 
+{\bfseries Simple\+Driver} ()
+\begin{DoxyCompactList}\small\item\em Costruttore del \doxylink{classscr_1_1_simple_driver}{Simple\+Driver}. Inizializza il classificatore KNN utilizzando un dataset di addestramento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscr_1_1_simple_driver_abb0069f34348695650d1bf8b9b745650}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Metodo chiamato quando la gara viene resettata. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscr_1_1_simple_driver_afda4e895e07e68f21baea30a2131f3c7}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Metodo chiamato alla chiusura del simulatore. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classscr_1_1_action}{Action}} \mbox{\hyperlink{classscr_1_1_simple_driver_a6c8d627753ca5518c63782938433e3bb}{control}} (\mbox{\hyperlink{interfacescr_1_1_sensor_model}{Sensor\+Model}} sensors)
+\begin{DoxyCompactList}\small\item\em Metodo di controllo principale eseguito ad ogni ciclo del simulatore. La logica di recovery da situazione di blocco è stata mantenuta (fallback), ma la parte di predizione delle azioni è stata modificata per utilizzare un classificatore KNN che predice le azioni di guida sulla base dei sensori. \end{DoxyCompactList}\item 
+float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_simple_driver_a730af498a0336a2c537a6a94bbeabe71}{init\+Angles}} ()
+\begin{DoxyCompactList}\small\item\em NON MODIFICATA\+: Inizializza gli angoli dei sensori di bordo pista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}} {\bfseries get\+Stage} ()
+\item 
+void {\bfseries set\+Stage} (\mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}} stage)
+\item 
+String {\bfseries get\+Track\+Name} ()
+\item 
+void {\bfseries set\+Track\+Name} (String track\+Name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classscr_1_1_controller}{Controller} di guida autonoma basato su KNN. Utilizza un classificatore KNN per predire le azioni di guida (accelerazione, frenata, sterzata) sulla base delle letture dei sensori, con logica di gestione per marcia, frizione e recupero da situazione di blocco. 
+
+\label{doc-func-members}
+\Hypertarget{classscr_1_1_simple_driver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classscr_1_1_simple_driver_a6c8d627753ca5518c63782938433e3bb}\index{scr.SimpleDriver@{scr.SimpleDriver}!control@{control}}
+\index{control@{control}!scr.SimpleDriver@{scr.SimpleDriver}}
+\doxysubsubsection{\texorpdfstring{control()}{control()}}
+{\footnotesize\ttfamily \label{classscr_1_1_simple_driver_a6c8d627753ca5518c63782938433e3bb} 
+\mbox{\hyperlink{classscr_1_1_action}{Action}} scr.\+Simple\+Driver.\+control (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacescr_1_1_sensor_model}{Sensor\+Model}}}]{sensors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo di controllo principale eseguito ad ogni ciclo del simulatore. La logica di recovery da situazione di blocco è stata mantenuta (fallback), ma la parte di predizione delle azioni è stata modificata per utilizzare un classificatore KNN che predice le azioni di guida sulla base dei sensori. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensors} & Il modello dei sensori del veicolo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}azione da eseguire 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+\Hypertarget{classscr_1_1_simple_driver_a730af498a0336a2c537a6a94bbeabe71}\index{scr.SimpleDriver@{scr.SimpleDriver}!initAngles@{initAngles}}
+\index{initAngles@{initAngles}!scr.SimpleDriver@{scr.SimpleDriver}}
+\doxysubsubsection{\texorpdfstring{initAngles()}{initAngles()}}
+{\footnotesize\ttfamily \label{classscr_1_1_simple_driver_a730af498a0336a2c537a6a94bbeabe71} 
+float\mbox{[}$\,$\mbox{]} scr.\+Simple\+Driver.\+init\+Angles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+NON MODIFICATA\+: Inizializza gli angoli dei sensori di bordo pista. 
+
+\begin{DoxyReturn}{Returns}
+Array con 19 angoli tra -\/90° e +90° 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+\Hypertarget{classscr_1_1_simple_driver_abb0069f34348695650d1bf8b9b745650}\index{scr.SimpleDriver@{scr.SimpleDriver}!reset@{reset}}
+\index{reset@{reset}!scr.SimpleDriver@{scr.SimpleDriver}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classscr_1_1_simple_driver_abb0069f34348695650d1bf8b9b745650} 
+void scr.\+Simple\+Driver.\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo chiamato quando la gara viene resettata. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+\Hypertarget{classscr_1_1_simple_driver_afda4e895e07e68f21baea30a2131f3c7}\index{scr.SimpleDriver@{scr.SimpleDriver}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!scr.SimpleDriver@{scr.SimpleDriver}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily \label{classscr_1_1_simple_driver_afda4e895e07e68f21baea30a2131f3c7} 
+void scr.\+Simple\+Driver.\+shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo chiamato alla chiusura del simulatore. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scr/Simple\+Driver.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,139 @@
+\doxysection{scr.\+Sample Class Reference}
+\hypertarget{classscr_1_1_sample}{}\label{classscr_1_1_sample}\index{scr.Sample@{scr.Sample}}
+
+
+Rappresenta un singolo campione del dataset, contenente input sensoriali e output delle azioni del veicolo.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classscr_1_1_sample_af752483cc5e21f64c545117a53392c97}{Sample}} (String line)
+\begin{DoxyCompactList}\small\item\em Costruttore che crea un \doxylink{classscr_1_1_sample}{Sample} a partire da una riga CSV. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classscr_1_1_sample_aeaf3495c54b1f2881855fedcf085357f}{Sample}} (double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_sample_a15cf697e04da5f024d75aa712f75fe90}{features}}, double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_sample_a2a00ff2b1bf6acb9e3135e0824c63c14}{targets}})
+\begin{DoxyCompactList}\small\item\em Costruttore che crea un \doxylink{classscr_1_1_sample}{Sample} a partire da array noti di feature e target. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classscr_1_1_sample_a094afa8594eaa8182b9ec9d14a3c74b1}{Sample}} (double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_sample_a15cf697e04da5f024d75aa712f75fe90}{features}})
+\begin{DoxyCompactList}\small\item\em Costruttore che crea un \doxylink{classscr_1_1_sample}{Sample} solo con le feature. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classscr_1_1_sample_a2739f4b7789c5d5d20f18b91f518b412}{distance}} (\mbox{\hyperlink{classscr_1_1_sample}{Sample}} other)
+\begin{DoxyCompactList}\small\item\em Calcola la distanza euclidea tra le feature di due \doxylink{classscr_1_1_sample}{Sample}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_sample_a15cf697e04da5f024d75aa712f75fe90}{features}}
+\item 
+double\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_sample_a2a00ff2b1bf6acb9e3135e0824c63c14}{targets}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Rappresenta un singolo campione del dataset, contenente input sensoriali e output delle azioni del veicolo. 
+
+\label{doc-constructors}
+\Hypertarget{classscr_1_1_sample_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classscr_1_1_sample_af752483cc5e21f64c545117a53392c97}\index{scr.Sample@{scr.Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!scr.Sample@{scr.Sample}}
+\doxysubsubsection{\texorpdfstring{Sample()}{Sample()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classscr_1_1_sample_af752483cc5e21f64c545117a53392c97} 
+scr.\+Sample.\+Sample (\begin{DoxyParamCaption}\item[{String}]{line}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Costruttore che crea un \doxylink{classscr_1_1_sample}{Sample} a partire da una riga CSV. 
+
+Assume che le ultime 4 colonne siano i valori target\+: accelerazione, frenata, sterzata e marcia.
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Stringa CSV contenente feature e target separati da virgole. \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} Feature\+: tutte le colonne tranne le ultime 4
+
+\texorpdfstring{$<$}{<} Target\+: ultime 4 colonne
+
+\texorpdfstring{$<$}{<} Accelerazione
+
+\texorpdfstring{$<$}{<} Frenata
+
+\texorpdfstring{$<$}{<} Sterzata
+
+\texorpdfstring{$<$}{<} Marcia\Hypertarget{classscr_1_1_sample_aeaf3495c54b1f2881855fedcf085357f}\index{scr.Sample@{scr.Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!scr.Sample@{scr.Sample}}
+\doxysubsubsection{\texorpdfstring{Sample()}{Sample()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classscr_1_1_sample_aeaf3495c54b1f2881855fedcf085357f} 
+scr.\+Sample.\+Sample (\begin{DoxyParamCaption}\item[{double\mbox{[}$\,$\mbox{]}}]{features}{, }\item[{double\mbox{[}$\,$\mbox{]}}]{targets}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Costruttore che crea un \doxylink{classscr_1_1_sample}{Sample} a partire da array noti di feature e target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em features} & Array delle feature (input). \\
+\hline
+{\em targets} & Array dei target (output\+: accelerate, brake, steer, gear). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classscr_1_1_sample_a094afa8594eaa8182b9ec9d14a3c74b1}\index{scr.Sample@{scr.Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!scr.Sample@{scr.Sample}}
+\doxysubsubsection{\texorpdfstring{Sample()}{Sample()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classscr_1_1_sample_a094afa8594eaa8182b9ec9d14a3c74b1} 
+scr.\+Sample.\+Sample (\begin{DoxyParamCaption}\item[{double\mbox{[}$\,$\mbox{]}}]{features}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Costruttore che crea un \doxylink{classscr_1_1_sample}{Sample} solo con le feature. 
+
+Inizializza i target a zero. Utile quando i target non sono noti (es. dati di test).
+
+
+\begin{DoxyParams}{Parameters}
+{\em features} & Array delle feature (input). \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classscr_1_1_sample_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classscr_1_1_sample_a2739f4b7789c5d5d20f18b91f518b412}\index{scr.Sample@{scr.Sample}!distance@{distance}}
+\index{distance@{distance}!scr.Sample@{scr.Sample}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}}
+{\footnotesize\ttfamily \label{classscr_1_1_sample_a2739f4b7789c5d5d20f18b91f518b412} 
+double scr.\+Sample.\+distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classscr_1_1_sample}{Sample}}}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calcola la distanza euclidea tra le feature di due \doxylink{classscr_1_1_sample}{Sample}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & L\textquotesingle{}altro sample da confrontare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La distanza euclidea tra le feature di this e other. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{classscr_1_1_sample_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classscr_1_1_sample_a15cf697e04da5f024d75aa712f75fe90}\index{scr.Sample@{scr.Sample}!features@{features}}
+\index{features@{features}!scr.Sample@{scr.Sample}}
+\doxysubsubsection{\texorpdfstring{features}{features}}
+{\footnotesize\ttfamily \label{classscr_1_1_sample_a15cf697e04da5f024d75aa712f75fe90} 
+double \mbox{[}$\,$\mbox{]} scr.\+Sample.\+features}
+
+Array delle feature di input (es. sensori, posizione, velocità). \Hypertarget{classscr_1_1_sample_a2a00ff2b1bf6acb9e3135e0824c63c14}\index{scr.Sample@{scr.Sample}!targets@{targets}}
+\index{targets@{targets}!scr.Sample@{scr.Sample}}
+\doxysubsubsection{\texorpdfstring{targets}{targets}}
+{\footnotesize\ttfamily \label{classscr_1_1_sample_a2a00ff2b1bf6acb9e3135e0824c63c14} 
+double \mbox{[}$\,$\mbox{]} scr.\+Sample.\+targets}
+
+Array dei valori target (accelerazione, frenata, sterzata, marcia). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scr/\mbox{\hyperlink{_sample_8java}{Sample.\+java}}\end{DoxyCompactItemize}

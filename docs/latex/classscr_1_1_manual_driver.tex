@@ -1,0 +1,118 @@
+\doxysection{scr.\+Manual\+Driver Class Reference}
+\hypertarget{classscr_1_1_manual_driver}{}\label{classscr_1_1_manual_driver}\index{scr.ManualDriver@{scr.ManualDriver}}
+
+
+\doxylink{classscr_1_1_manual_driver}{Manual\+Driver} consente il controllo manuale dell\textquotesingle{}auto tramite tastiera e la registrazione dei dati su file CSV per addestramento supervisato. È possibile alternare tra modalità automatica e manuale, registrare i comandi, e salvare i sensori in tempo reale ogni 150ms.  
+
+
+Inheritance diagram for scr.\+Manual\+Driver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classscr_1_1_manual_driver}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classscr_1_1_manual_driver_a381d04b4056bdd5b974ec776d357fa37}\label{classscr_1_1_manual_driver_a381d04b4056bdd5b974ec776d357fa37} 
+{\bfseries Manual\+Driver} ()
+\begin{DoxyCompactList}\small\item\em Costruttore. Inizializza il lettore di input da tastiera e associa i tasti ai comandi. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classscr_1_1_action}{Action}} \mbox{\hyperlink{classscr_1_1_manual_driver_a11f89c452be88094ff1286be111426c3}{control}} (\mbox{\hyperlink{interfacescr_1_1_sensor_model}{Sensor\+Model}} sensors)
+\begin{DoxyCompactList}\small\item\em Metodo principale di controllo. Genera l\textquotesingle{}azione da eseguire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscr_1_1_manual_driver_ad63156acb8c047303a654cea6864ddc7}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Metodo chiamato alla fase di reset del controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classscr_1_1_manual_driver_aad77a31d6f194cf9c44f99518a8dceba}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Metodo chiamato alla chiusura del controller. \end{DoxyCompactList}\item 
+float\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classscr_1_1_manual_driver_a33553329e7e614f0f723ed5296053526}{init\+Angles}} ()
+\begin{DoxyCompactList}\small\item\em Inizializza gli angoli dei sensori di bordo pista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}} {\bfseries get\+Stage} ()
+\item 
+void {\bfseries set\+Stage} (\mbox{\hyperlink{enumscr_1_1_controller_1_1_stage}{Stage}} stage)
+\item 
+String {\bfseries get\+Track\+Name} ()
+\item 
+void {\bfseries set\+Track\+Name} (String track\+Name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classscr_1_1_manual_driver}{Manual\+Driver} consente il controllo manuale dell\textquotesingle{}auto tramite tastiera e la registrazione dei dati su file CSV per addestramento supervisato. È possibile alternare tra modalità automatica e manuale, registrare i comandi, e salvare i sensori in tempo reale ogni 150ms. 
+
+\label{doc-func-members}
+\Hypertarget{classscr_1_1_manual_driver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classscr_1_1_manual_driver_a11f89c452be88094ff1286be111426c3}\index{scr.ManualDriver@{scr.ManualDriver}!control@{control}}
+\index{control@{control}!scr.ManualDriver@{scr.ManualDriver}}
+\doxysubsubsection{\texorpdfstring{control()}{control()}}
+{\footnotesize\ttfamily \label{classscr_1_1_manual_driver_a11f89c452be88094ff1286be111426c3} 
+\mbox{\hyperlink{classscr_1_1_action}{Action}} scr.\+Manual\+Driver.\+control (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacescr_1_1_sensor_model}{Sensor\+Model}}}]{sensors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo principale di controllo. Genera l\textquotesingle{}azione da eseguire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sensors} & Il modello sensoriale con i dati del veicolo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}azione da eseguire in questo ciclo 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+\Hypertarget{classscr_1_1_manual_driver_a33553329e7e614f0f723ed5296053526}\index{scr.ManualDriver@{scr.ManualDriver}!initAngles@{initAngles}}
+\index{initAngles@{initAngles}!scr.ManualDriver@{scr.ManualDriver}}
+\doxysubsubsection{\texorpdfstring{initAngles()}{initAngles()}}
+{\footnotesize\ttfamily \label{classscr_1_1_manual_driver_a33553329e7e614f0f723ed5296053526} 
+float\mbox{[}$\,$\mbox{]} scr.\+Manual\+Driver.\+init\+Angles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inizializza gli angoli dei sensori di bordo pista. 
+
+\begin{DoxyReturn}{Returns}
+Array di angoli da -\/90° a +90° 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+\Hypertarget{classscr_1_1_manual_driver_ad63156acb8c047303a654cea6864ddc7}\index{scr.ManualDriver@{scr.ManualDriver}!reset@{reset}}
+\index{reset@{reset}!scr.ManualDriver@{scr.ManualDriver}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{classscr_1_1_manual_driver_ad63156acb8c047303a654cea6864ddc7} 
+void scr.\+Manual\+Driver.\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo chiamato alla fase di reset del controller. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+\Hypertarget{classscr_1_1_manual_driver_aad77a31d6f194cf9c44f99518a8dceba}\index{scr.ManualDriver@{scr.ManualDriver}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!scr.ManualDriver@{scr.ManualDriver}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily \label{classscr_1_1_manual_driver_aad77a31d6f194cf9c44f99518a8dceba} 
+void scr.\+Manual\+Driver.\+shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Metodo chiamato alla chiusura del controller. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classscr_1_1_controller}{scr.\+Controller}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/scr/Manual\+Driver.\+java\end{DoxyCompactItemize}
