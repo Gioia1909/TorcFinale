@@ -43,7 +43,7 @@ public class SimpleDriver extends Controller {
 	 *        addestramento.
 	 */
 	public SimpleDriver() {
-		classifier = new KNNClassifier("dataset_150ms.csv", 5);
+		classifier = new KNNClassifier("dataset_50ms.csv", 3);
 	}
 
 	/**
