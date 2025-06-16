@@ -24,7 +24,7 @@ Implementazione in Java del sistema:
 - 'ContinuousCharReader.java': Inserimento di caratteri da tastiera
 - 'ManualDriver.java': scrittura sul dataset.csv ogni 50ms
 
-Il dataset raccolto ('dataset.csv') e l’output delle predizioni ('predizioni_test.csv') sono inclusi per verifica e test.
+Il dataset raccolto ('dataset_50ms.csv') e l’output delle predizioni ('predizioni_test.csv') sono inclusi per verifica e test.
 
 -----
 
