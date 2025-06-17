@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class KNNTester {
 
-    private static final String DATASET_PATH = "dataset2589101316_10ms.csv";
+    private static final String DATASET_PATH = "dataset_50ms.csv";
     private static final String OUTPUT_LOG = "predizioni_test.csv";
 
     /**
@@ -29,7 +29,7 @@ public class KNNTester {
      * @param args Argomenti da linea di comando (non utilizzati).
      */
     public static void main(String[] args) {
-        int k = 20;
+        int k = 1;
         double testRatio = 0.2;
 
         // Caricamento e preparazione del dataset
